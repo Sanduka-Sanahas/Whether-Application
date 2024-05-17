@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherSwift</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Css/style.css" />
+  </head>
+
+  <body onload="loadDefaultLocation()">
+    <div class="city-search-mode">
+      <div>
+        <label for="" class="lblLocation"></label>
+      </div>
+      <div class="searchBox">
+        <input
+          type="text"
+          placeholder="Search location"
+          class="searchField"
+          id="searchField"
+        />
+        <button onclick="searchBtnOnClick()" class="btn-search">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+      <div class="switchTheme">
+        <button class="btnDarkMode" onclick="switchTheme()">
+          <i class="bi bi-moon-fill"></i>
+        </button>
+      </div>
+    </div>
+    <main class="">
+      <div class="container-sm">
+        <div class="currentWeather row">
+          <div class="temp-wrapper col-md-3">
+            <div class="icon"></div>
+            <p class="currentTemp"></p>
+            <p class="currentState">Mostly sunny</p>
+          </div>
+          <div class="tblContainer col-md-8">
+            <table class="tblDetails">
+              <tr>
+                <td class="tblDetails">
+                  <h2 class="lblHumidity"></h2>
+                  <p class="weatherStatus">Humidity</p>
+                </td>
+                <td class="tblDetails">
+                  <h2 class="lblWind"></h2>
+                  <p class="weatherStatus">Wind</p>
+                </td>
+                <td class="tblDetails">
+                  <h2 class="lblPressure"></h2>
+                  <p class="weatherStatus">Pressure in mili bar</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tblDetails">
+                  <h2 class="lblUv"></h2>
+                  <p class="weatherStatus">UV Index</p>
+                </td>
+                <td class="tblDetails">
+                  <h2 class="lblCloudCover"></h2>
+                  <p class="weatherStatus">Cloud cover</p>
+                </td>
+                <td class="tblDetails">
+                  <h2 class="lblPrecipitation"></h2>
+                  <p class="weatherStatus">Precipitation in millimeters</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="container-md history-wrapper">
+        <h2 for="" class="lblHistory">&nbsp;Past 3 days</h2>
+        <div class="historyDetailsContainer">
+          <div class="card card-custom">
+            <div class="imgCard1">
+              <img src="" class="card-img-top" alt="weather icon" />
+            </div>
+            <div class="card-body">
+              <label for="" class="lblCard1 lblCard-style"></label>
+              <p class="card-text"></p>
+              <table>
+                <tr>
+                  <td class="historyTableDetails">Max temp:</td>
+                  <td class="lblHistoryMaxTemp1 textStyle"></td>
+                </tr>
+                <tr>
+                  <td class="historyTableDetails">Min temp:</td>
+                  <td class="lblHistoryMinTemp1 textStyle"></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="lblHistoryText1 textStyle"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card card-custom">
+            <div class="imgCard2">
+              <img src="" class="card-img-top" alt="weather icon" />
+            </div>
+            <div class="card-body">
+              <label for="" class="lblCard2 lblCard-style"></label>
+              <p class="card-text"></p>
+              <table>
+                <tr>
+                  <td class="historyTableDetails">Max temp:</td>
+                  <td class="lblHistoryMaxTemp2 textStyle"></td>
+                </tr>
+                <tr>
+                  <td class="historyTableDetails">Min temp:</td>
+                  <td class="lblHistoryMinTemp2 textStyle"></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="lblHistoryText2 textStyle"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card card-custom">
+            <div class="imgCard3">
+              <img src="" class="card-img-top" alt="weather icon" />
+            </div>
+            <div class="card-body">
+              <label for="" class="lblCard3 lblCard-style"></label>
+              <p class="card-text"></p>
+              <table>
+                <tr>
+                  <td class="historyTableDetails">Max temp:</td>
+                  <td class="lblHistoryMaxTemp3 textStyle"></td>
+                </tr>
+                <tr>
+                  <td class="historyTableDetails">Min temp:</td>
+                  <td class="lblHistoryMinTemp3 textStyle"></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="lblHistoryText3 textStyle"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-md forecast-wrapper">
+        <h2 for="" class="lblFuture">&nbsp;Next 3 days</h2>
+        <div class="nextDaysDetails">
+          <table class="tblFuture">
+            <tr>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals day01Date"
+                  ><label for="" class="raw1Date"></label>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw1MaxTemp"> 10℃ </label>
+                  <p>Max Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw1MinTemp"> 21℃ </label>
+                  <p>Min Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw1WindSpeed">12mph</label>
+                  <p>Wind Speed (max)</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw1Humidity">0%</label>
+                  <p>Humidity (avg)</p>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals day01Date"
+                  ><label for="" class="raw2Date"></label>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw2MaxTemp"> 10℃ </label>
+                  <p>Max Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw2MinTemp"> 21℃ </label>
+                  <p>Min Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw2WindSpeed">12mph</label>
+                  <p>Wind Speed (max)</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw2Humidity">0%</label>
+                  <p>Humidity (avg)</p>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals day01Date"
+                  ><label for="" class="raw3Date"></label>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw3MaxTemp"> 10℃ </label>
+                  <p>Max Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals"
+                  ><label for="" class="raw3MinTemp"> 21℃ </label>
+                  <p>Min Temp</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw3WindSpeed">12mph</label>
+                  <p>Wind Speed (max)</p>
+                </label>
+              </td>
+              <td class="second-table-td">
+                <label for="" class="lblFutureDetals">
+                  <label for="" class="raw3Humidity">0%</label>
+                  <p>Humidity (avg)</p>
+                </label>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer class="">
+      <div class="footer-wrapper">
+        <h5 class="credit container">
+          Created by Sanduka&nbsp;
+          <a
+            href="https://www.linkedin.com/in/sanduka-sanahas-3448b8263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+          <a href="https://github.com/Sanduka-Sanahas"
+            ><i class="bi bi-github"></i
+          ></a>
+        </h5>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="Js/script.js"></script>
+  </body>
+</html>
